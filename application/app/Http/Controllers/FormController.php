@@ -23,6 +23,6 @@ class FormController extends Controller
 //        return $request->path();
 //        return $request->url();
     
-        
+    
     }
 }

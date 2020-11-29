@@ -16,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test/{id}', function ($id) {
+    echo $id;
+    return view('first');
+});
+Route::get('user_home','User@index');
+Route::get('user_home/{id}','User@index');
+
 
 Auth::routes();
-
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'TodoController@index')->name('home');
 //Route::get('/todo_show', 'TodoController@index')->name('todo_show');
@@ -44,4 +50,21 @@ Route::view('denied','denied');
 Route::group(['middleware'=>['UserCheck']],function(){
     Route::view('news','news');
 });
+Route::get('session_set','User@session_set');
+Route::get('session_get','User@session_get');
+Route::get('session_remove','User@session_remove');
+Route::get('session_check','User@session_check');
+Route::view('login','login');
+Route::post('userLoginSubmit','User@userLoginSubmit');
+Route::get('/logout', function () {
+    session()->forget('name');
+    session()->flash('error','Logout successfully');
+    return redirect('login');
+});
+Route::group(['middleware'=>['UserAuth']],function(){
+    Route::get('index','User@index');
+    Route::get('about','User@about');
+    Route::get('services','User@services');
+});
+
 

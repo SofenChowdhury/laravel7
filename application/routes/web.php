@@ -67,4 +67,8 @@ Route::group(['middleware'=>['UserAuth']],function(){
     Route::get('services','User@services');
 });
 
-
+Route::get('select','DB_Test@select');
+Route::get('insert','DB_Test@insert');
+Route::get('update','DB_Test@update');
+Route::get('delete','DB_Test@delete');
+Route::get('get_data','UserProfile@index');

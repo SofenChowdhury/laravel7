@@ -16,6 +16,17 @@
 
                     {{ __('You are logged in!') }}
                     <a href="todo_show">Show Todo List </a>
+                    <table>
+                        @foreach($data as $item)
+                        <tr>
+                            <td>{{$item->id}}</td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->email}}</td>
+                            <td>{{$item->password}}</td>
+                        </tr>
+                        @endforeach
+                    </table>
+                    {{$data->links()}}
                 </div>
             </div>
         </div>
